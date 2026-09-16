@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 35 1200 560">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#667085"/></marker>
+    <style>
+      .title{font:700 32px system-ui,sans-serif;fill:#101828}.label{font:600 19px system-ui,sans-serif;fill:#101828}
+      .small{font:17px system-ui,sans-serif;fill:#475467}.inverse{fill:#fff}.axis{stroke:#98a2b3;stroke-width:3}.arrow{stroke:#667085;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="90" y="105" width="470" height="320" fill="#f2f4f7"/>
+  <rect x="560" y="105" width="550" height="320" fill="#292c33"/>
+  <text x="835" y="140" text-anchor="middle" class="small inverse">Selected window</text>
+  <line x1="90" y1="310" x2="1110" y2="310" class="axis"/>
+  <rect x="170" y="265" width="170" height="46" rx="10" fill="#73bf69" opacity=".22" stroke="#73bf69" stroke-width="3" stroke-dasharray="12 9"/>
+  <rect x="340" y="265" width="140" height="46" rx="10" fill="#73bf69"/>
+  <rect x="480" y="265" width="500" height="46" rx="10" fill="#ff9830"/>
+  <circle cx="170" cy="288" r="11" fill="#73bf69" opacity=".45"/>
+  <text x="170" y="225" text-anchor="middle" class="label">ACTIVE log</text>
+  <line x1="340" y1="180" x2="340" y2="355" stroke="#5794f2" stroke-width="4"/>
+  <text x="340" y="160" text-anchor="middle" class="label">CHECKPOINT</text>
+  <text x="340" y="390" text-anchor="middle" class="small">grant=ACTIVE</text>
+  <line x1="480" y1="205" x2="480" y2="355" stroke="#ff9830" stroke-width="4"/>
+  <text x="480" y="185" text-anchor="middle" class="label">REVOKE</text>
+  <text x="480" y="390" text-anchor="middle" class="small">after checkpoint</text>
+  <line x1="560" y1="105" x2="560" y2="425" stroke="#5794f2" stroke-width="4"/>
+  <text x="560" y="465" text-anchor="middle" class="small">window start</text>
+  <text x="750" y="295" text-anchor="middle" class="small inverse">REVOKED</text>
+  <path d="M355 130 C430 90 510 90 550 130" class="arrow"/>
+  <text x="455" y="90" text-anchor="middle" class="small">Replay events before rendering</text>
+</svg>

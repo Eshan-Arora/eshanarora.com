@@ -1,0 +1,197 @@
+<svg id="coordinator-restart-viz" viewBox="0 0 1200 790" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<style>:root{color-scheme:light}
+    #coordinator-restart-viz {
+      --cr-canvas: #ffffff;
+      --cr-ink: #101828;
+      --cr-muted-ink: #475467;
+      --cr-structure: #667085;
+      --cr-box: #f8fafc;
+      --cr-box-stroke: #98a2b3;
+      --cr-coordinator: #eef4ff;
+      --cr-blue: rgb(87 148 242);
+      --cr-grant: #ecfdf3;
+      --cr-green: rgb(115 191 105);
+      --cr-shard: #d1fadf;
+      --cr-empty: #f2f4f7;
+      --cr-orange: rgb(255 152 48);
+      --cr-log-fold: #b9d2fb;
+      --cr-on-blue: #ffffff;
+      width: 100%;
+      color: var(--foreground);
+      font-family: inherit;
+      font-size: var(--font-size-base);
+    }
+
+    #coordinator-restart-viz * {
+      box-sizing: border-box;
+    }
+
+    #coordinator-restart-viz svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    #coordinator-restart-viz .canvas { fill: #ffffff; }
+    #coordinator-restart-viz .ink { fill: #101828; }
+    #coordinator-restart-viz .muted { fill: #475467; }
+    #coordinator-restart-viz .coordinator-box { fill: #eef4ff; stroke: #5794f2; stroke-width: 3; }
+    #coordinator-restart-viz .coordinator-divider { stroke: #5794f2; stroke-width: 2; opacity: .28; }
+    #coordinator-restart-viz .grant-box { fill: #ecfdf3; stroke: #73bf69; stroke-width: 2; }
+    #coordinator-restart-viz .pod-box { fill: #f8fafc; stroke: #98a2b3; stroke-width: 2; }
+    #coordinator-restart-viz .empty-box { fill: #f2f4f7; stroke: #98a2b3; stroke-width: 2; stroke-dasharray: 10 8; }
+    #coordinator-restart-viz .shard-pill { fill: #d1fadf; }
+    #coordinator-restart-viz .arrow { fill: none; stroke: #667085; stroke-width: 3; marker-end: url(#cr-arrow); }
+    #coordinator-restart-viz .attach-arrow { fill: none; stroke: #5794f2; stroke-width: 3; marker-end: url(#cr-blue-arrow); }
+    #coordinator-restart-viz .time-arrow { fill: none; stroke: #667085; stroke-width: 3; marker-end: url(#cr-arrow); }
+    #coordinator-restart-viz .log-box { fill: #5794f2; }
+    #coordinator-restart-viz .log-fold { fill: #b9d2fb; }
+    #coordinator-restart-viz .log-text { fill: #ffffff; font: 500 15px system-ui, sans-serif; }
+    #coordinator-restart-viz .axis { stroke: #98a2b3; stroke-width: 3; }
+    #coordinator-restart-viz .active-bar { fill: #73bf69; }
+    #coordinator-restart-viz .gap { fill: #f2f4f7; }
+    #coordinator-restart-viz .restart-marker { stroke: #ff9830; stroke-width: 4; }
+    #coordinator-restart-viz .attach-marker { stroke: #5794f2; stroke-width: 4; }
+    #coordinator-restart-viz .stage-label { font: 500 18px system-ui, sans-serif; letter-spacing: 1.8px; }
+    #coordinator-restart-viz .entity-title { font: 500 22px system-ui, sans-serif; }
+    #coordinator-restart-viz .field { font: 400 15px system-ui, sans-serif; }
+    #coordinator-restart-viz .small { font: 400 16px system-ui, sans-serif; }
+    #coordinator-restart-viz .event { font: 500 14px system-ui, sans-serif; letter-spacing: .5px; }
+    #coordinator-restart-viz .lane-label { font: 500 17px system-ui, sans-serif; }
+    #coordinator-restart-viz .bar-label { font: 500 15px system-ui, sans-serif; }
+    #coordinator-restart-viz .generation-old { fill: #ff9830; }
+    #coordinator-restart-viz .generation-new { fill: #5794f2; }
+
+    @media (max-width: 520px) {
+      #coordinator-restart-viz .field { font-size: 16px; }
+      #coordinator-restart-viz .small { font-size: 17px; }
+    }
+  </style>
+    <title>Coordinator restart and attach recovery</title>
+    <desc>The new coordinator starts empty, then rebuilds its in-memory grant view from attach messages sent by pods that continued holding the grants.</desc>
+    <defs>
+      <marker id="cr-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+      </marker>
+      <marker id="cr-blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#5794f2"/>
+      </marker>
+      <marker id="cr-orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#ff9830"/>
+      </marker>
+    </defs>
+
+    <text x="200" y="40" text-anchor="middle" class="stage-label muted">BEFORE</text>
+    <text x="600" y="40" text-anchor="middle" class="stage-label muted">RESTART</text>
+    <text x="1000" y="40" text-anchor="middle" class="stage-label muted">REBUILT</text>
+
+    <path d="M370 265 H430" class="time-arrow"/>
+    <path d="M770 265 H830" class="time-arrow"/>
+
+    <rect x="45" y="70" width="310" height="260" rx="20" class="coordinator-box"/>
+    <text x="200" y="101" text-anchor="middle" class="entity-title ink">Coordinator</text>
+    <text x="200" y="128" text-anchor="middle" class="small generation-old">generation n</text>
+    <line x1="45" y1="145" x2="355" y2="145" class="coordinator-divider"/>
+
+    <rect x="55" y="160" width="140" height="150" rx="18" class="grant-box"/>
+    <text x="75" y="190" class="entity-title ink">Grant A</text>
+    <text x="75" y="220" class="field ink">ID</text><text x="125" y="220" class="field muted">…:6</text>
+    <text x="75" y="247" class="field ink">State</text><text x="125" y="247" class="field muted">ACTIVE</text>
+    <text x="75" y="274" class="field ink">Pod</text><text x="125" y="274" class="field muted">A</text>
+
+    <rect x="205" y="160" width="140" height="150" rx="18" class="grant-box"/>
+    <text x="225" y="190" class="entity-title ink">Grant B</text>
+    <text x="225" y="220" class="field ink">ID</text><text x="275" y="220" class="field muted">…:15</text>
+    <text x="225" y="247" class="field ink">State</text><text x="275" y="247" class="field muted">ACTIVE</text>
+    <text x="225" y="274" class="field ink">Pod</text><text x="275" y="274" class="field muted">B</text>
+
+    <path d="M127 312 V378" class="arrow"/>
+    <path d="M275 312 V378" class="arrow"/>
+
+    <rect x="55" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="127" y="420" text-anchor="middle" class="entity-title ink">Pod A</text>
+    <rect x="75" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="127" y="461" text-anchor="middle" class="field ink">Shard 0–2</text>
+
+    <rect x="210" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="282" y="420" text-anchor="middle" class="entity-title ink">Pod B</text>
+    <rect x="230" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="282" y="461" text-anchor="middle" class="field ink">Shard 2–4</text>
+
+    <rect x="445" y="70" width="310" height="260" rx="20" class="coordinator-box"/>
+    <text x="600" y="101" text-anchor="middle" class="entity-title ink">Coordinator</text>
+    <text x="600" y="128" text-anchor="middle" class="small generation-new">generation n + 1</text>
+    <line x1="445" y1="145" x2="755" y2="145" class="coordinator-divider"/>
+
+    <rect x="500" y="165" width="200" height="130" rx="18" class="empty-box"/>
+    <text x="600" y="220" text-anchor="middle" class="entity-title ink">No grants</text>
+    <text x="600" y="250" text-anchor="middle" class="small muted">in memory</text>
+
+    <rect x="480" y="335" width="240" height="40" class="log-box"/>
+    <path d="M690 335 H720 V365 Z" class="log-fold"/>
+    <text x="500" y="361" class="log-text">LOG · coordinator_start</text>
+
+    <rect x="455" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="527" y="420" text-anchor="middle" class="entity-title ink">Pod A</text>
+    <rect x="475" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="527" y="461" text-anchor="middle" class="field ink">Shard 0–2</text>
+
+    <rect x="610" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="682" y="420" text-anchor="middle" class="entity-title ink">Pod B</text>
+    <rect x="630" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="682" y="461" text-anchor="middle" class="field ink">Shard 2–4</text>
+
+    <rect x="845" y="70" width="310" height="260" rx="20" class="coordinator-box"/>
+    <text x="1000" y="101" text-anchor="middle" class="entity-title ink">Coordinator</text>
+    <text x="1000" y="128" text-anchor="middle" class="small generation-new">generation n + 1</text>
+    <line x1="845" y1="145" x2="1155" y2="145" class="coordinator-divider"/>
+
+    <rect x="855" y="160" width="140" height="150" rx="18" class="grant-box"/>
+    <text x="875" y="190" class="entity-title ink">Grant A</text>
+    <text x="875" y="220" class="field ink">ID</text><text x="925" y="220" class="field muted">…:6</text>
+    <text x="875" y="247" class="field ink">State</text><text x="925" y="247" class="field muted">ACTIVE</text>
+    <text x="875" y="274" class="field ink">Pod</text><text x="925" y="274" class="field muted">A</text>
+
+    <rect x="1005" y="160" width="140" height="150" rx="18" class="grant-box"/>
+    <text x="1025" y="190" class="entity-title ink">Grant B</text>
+    <text x="1025" y="220" class="field ink">ID</text><text x="1075" y="220" class="field muted">…:15</text>
+    <text x="1025" y="247" class="field ink">State</text><text x="1075" y="247" class="field muted">ACTIVE</text>
+    <text x="1025" y="274" class="field ink">Pod</text><text x="1075" y="274" class="field muted">B</text>
+
+    <path d="M927 382 V316" class="attach-arrow"/>
+    <path d="M1075 382 V316" class="attach-arrow"/>
+    <text x="915" y="350" text-anchor="end" class="event generation-new">ATTACH</text>
+    <text x="1087" y="350" text-anchor="start" class="event generation-new">ATTACH</text>
+
+    <rect x="855" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="927" y="420" text-anchor="middle" class="entity-title ink">Pod A</text>
+    <rect x="875" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="927" y="461" text-anchor="middle" class="field ink">Shard 0–2</text>
+
+    <rect x="1010" y="385" width="145" height="105" rx="20" class="pod-box"/>
+    <text x="1082" y="420" text-anchor="middle" class="entity-title ink">Pod B</text>
+    <rect x="1030" y="440" width="105" height="30" rx="10" class="shard-pill"/>
+    <text x="1082" y="461" text-anchor="middle" class="field ink">Shard 2–4</text>
+
+    <line x1="55" y1="548" x2="1145" y2="548" class="axis" opacity=".28"/>
+
+    <text x="185" y="612" text-anchor="end" class="lane-label ink">Coordinator view</text>
+    <line x1="220" y1="600" x2="1145" y2="600" class="axis"/>
+    <rect x="220" y="577" width="340" height="46" rx="10" class="active-bar"/>
+    <rect x="560" y="577" width="185" height="46" class="gap"/>
+    <rect x="745" y="577" width="400" height="46" rx="10" class="active-bar"/>
+    <text x="390" y="606" text-anchor="middle" class="bar-label ink">ACTIVE</text>
+    <text x="652" y="606" text-anchor="middle" class="small muted">not attached</text>
+    <text x="945" y="606" text-anchor="middle" class="bar-label ink">ACTIVE</text>
+
+    <text x="185" y="691" text-anchor="end" class="lane-label ink">Pod view</text>
+    <line x1="220" y1="679" x2="1145" y2="679" class="axis"/>
+    <rect x="220" y="656" width="925" height="46" rx="10" class="active-bar"/>
+    <text x="682" y="685" text-anchor="middle" class="bar-label ink">ACTIVE</text>
+
+    <line x1="560" y1="557" x2="560" y2="722" class="restart-marker"/>
+    <line x1="745" y1="557" x2="745" y2="722" class="attach-marker"/>
+    <text x="560" y="751" text-anchor="middle" class="event ink">COORDINATOR_START</text>
+    <text x="745" y="751" text-anchor="middle" class="event ink">ATTACH</text>
+  </svg>

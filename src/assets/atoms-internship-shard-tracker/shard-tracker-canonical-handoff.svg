@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="800" viewBox="0 0 1400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Canonical two-grant shard handoff</title>
+  <desc id="desc">A simplified shard tracker dashboard filtered to two grants, showing the old grant becoming revoked and unloaded as the new grant becomes allocated, loaded, and active.</desc>
+  <defs>
+    <style>
+      .ink{fill:#101828}.muted{fill:#475467}.inverse{fill:#fff}
+      .filter-label{font:600 12px system-ui,-apple-system,sans-serif;letter-spacing:.2px}
+      .filter-value{font:500 15px system-ui,-apple-system,sans-serif}
+      .key-value{font:500 10.5px ui-monospace,SFMono-Regular,Menlo,monospace}
+      .column{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.8px}
+      .meta{font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace}
+      .tick{font:500 12px system-ui,-apple-system,sans-serif}
+      .state{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.2px}
+      .filter{fill:#f8fafc;stroke:#98a2b3;stroke-width:2}
+      .panel{fill:none;stroke:#98a2b3;stroke-width:2}
+      .metadata{fill:#f2f4f7}
+      .plot{fill:#292c33}
+      .row-rule{stroke:#d0d5dd;stroke-width:1;opacity:.45}
+      .grid{stroke:#667085;stroke-width:1;opacity:.45}
+      .active{fill:#73bf69}.allocated{fill:#5794f2}.loaded{fill:#53cce6}
+      .revoked{fill:#ff9830}.unloaded{fill:#8e8e8e}
+    </style>
+  </defs>
+
+  <g>
+    <text x="40" y="35" class="filter-label muted">Environment</text>
+    <rect x="40" y="47" width="160" height="42" rx="9" class="filter"/>
+    <circle cx="59" cy="68" r="5" fill="#73bf69"/>
+    <text x="73" y="73" class="filter-value ink">staging</text>
+    <text x="181" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="214" y="35" class="filter-label muted">Tenant</text>
+    <rect x="214" y="47" width="125" height="42" rx="9" class="filter"/>
+    <text x="231" y="73" class="filter-value ink">test</text>
+    <text x="320" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="353" y="35" class="filter-label muted">Service</text>
+    <rect x="353" y="47" width="205" height="42" rx="9" class="filter"/>
+    <text x="370" y="73" class="filter-value ink">order-central</text>
+    <text x="539" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="572" y="35" class="filter-label muted">Domain</text>
+    <rect x="572" y="47" width="170" height="42" rx="9" class="filter"/>
+    <text x="589" y="73" class="filter-value ink">facilities</text>
+    <text x="723" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="756" y="35" class="filter-label muted">Domain key</text>
+    <rect x="756" y="47" width="258" height="42" rx="9" fill="#eef4ff" stroke="#5794f2" stroke-width="2"/>
+    <text x="773" y="73" class="key-value ink">10000000-0000-0000-0000-000000000000</text>
+
+    <text x="1028" y="35" class="filter-label muted">Shard region</text>
+    <rect x="1028" y="47" width="135" height="42" rx="9" class="filter"/>
+    <text x="1045" y="73" class="filter-value ink">All</text>
+    <text x="1144" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="1177" y="35" class="filter-label muted">Time range</text>
+    <rect x="1177" y="47" width="183" height="42" rx="9" fill="#eef4ff" stroke="#5794f2" stroke-width="2"/>
+    <circle cx="1198" cy="68" r="7" fill="none" stroke="#5794f2" stroke-width="2"/>
+    <path d="M1198 64 V68 L1202 71" fill="none" stroke="#5794f2" stroke-width="2" stroke-linecap="round"/>
+    <text x="1215" y="73" class="filter-value ink">Last 1 hour</text>
+    <text x="1341" y="73" text-anchor="end" class="filter-value muted">⌄</text>
+  </g>
+
+  <rect x="40" y="120" width="1320" height="240" rx="18" class="panel"/>
+  <text x="65" y="164" class="column muted">GRANT ID</text>
+  <text x="185" y="164" class="column muted">POD ID</text>
+  <text x="315" y="164" class="column muted">REGION</text>
+  <text x="405" y="164" class="column muted">SHARD RANGE</text>
+
+  <text x="550" y="164" class="tick muted">10:00</text>
+  <text x="803" y="164" text-anchor="middle" class="tick muted">10:10</text>
+  <text x="1057" y="164" text-anchor="middle" class="tick muted">10:20</text>
+  <text x="1340" y="164" text-anchor="end" class="tick muted">10:30</text>
+
+  <rect x="60" y="180" width="470" height="140" rx="12" class="metadata"/>
+  <rect x="540" y="180" width="800" height="140" rx="12" class="plot"/>
+  <line x1="540" y1="250" x2="1340" y2="250" class="row-rule"/>
+  <line x1="540" y1="180" x2="540" y2="320" class="grid"/>
+  <line x1="803" y1="180" x2="803" y2="320" class="grid"/>
+  <line x1="1057" y1="180" x2="1057" y2="320" class="grid"/>
+  <line x1="1340" y1="180" x2="1340" y2="320" class="grid"/>
+
+  <g class="meta ink">
+    <text x="75" y="221">grant-a6f2</text><text x="185" y="221">pod-a17c</text><text x="315" y="221">east-1</text><text x="405" y="221">0000–2000</text>
+    <text x="75" y="291">grant-b91d</text><text x="185" y="291">pod-f29d</text><text x="315" y="291">east-1</text><text x="405" y="291">0000–2000</text>
+  </g>
+
+  <g>
+    <rect x="560" y="202" width="456" height="34" rx="7" class="active"/>
+    <text x="788" y="223" text-anchor="middle" class="state ink">ACTIVE</text>
+    <rect x="1016" y="202" width="8" height="34" class="revoked"/>
+    <rect x="1024" y="202" width="8" height="34" rx="3" class="unloaded"/>
+
+    <rect x="1016" y="272" width="8" height="34" rx="3" class="allocated"/>
+    <rect x="1024" y="272" width="8" height="34" class="loaded"/>
+    <rect x="1032" y="272" width="288" height="34" rx="7" class="active"/>
+    <text x="1176" y="293" text-anchor="middle" class="state ink">ACTIVE</text>
+  </g>
+</svg>

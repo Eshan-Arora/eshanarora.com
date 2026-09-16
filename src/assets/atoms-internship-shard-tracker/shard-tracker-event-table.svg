@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="1240" viewBox="0 0 1400 620" role="img" aria-labelledby="title desc">
+  <title id="title">Shard tracker event table</title>
+  <desc id="desc">A simplified event table listing timestamps, domains, shard ranges, grant IDs, regions, linked pod IDs, and state transitions.</desc>
+  <defs>
+    <style>
+      .ink{fill:#101828}.muted{fill:#475467}
+      .panel{fill:none;stroke:#98a2b3;stroke-width:2}
+      .header{fill:#f2f4f7}
+      .stripe{fill:#f8fafc}
+      .rule{stroke:#d0d5dd;stroke-width:1}
+      .column{font:700 12px system-ui,-apple-system,sans-serif;letter-spacing:.7px;fill:#475467}
+      .cell{font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#101828}
+      .link{font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#3976d3;text-decoration:underline}
+    </style>
+  </defs>
+
+  <rect x="40" y="40" width="1320" height="540" rx="18" class="panel"/>
+  <path d="M58 58 H1342 V125 H58 Z" class="header"/>
+
+  <rect x="58" y="180" width="1284" height="55" class="stripe"/>
+  <rect x="58" y="290" width="1284" height="55" class="stripe"/>
+  <rect x="58" y="400" width="1284" height="55" class="stripe"/>
+  <rect x="58" y="510" width="1284" height="55" class="stripe"/>
+
+  <g>
+    <line x1="58" y1="125" x2="1342" y2="125" class="rule"/>
+    <line x1="58" y1="180" x2="1342" y2="180" class="rule"/>
+    <line x1="58" y1="235" x2="1342" y2="235" class="rule"/>
+    <line x1="58" y1="290" x2="1342" y2="290" class="rule"/>
+    <line x1="58" y1="345" x2="1342" y2="345" class="rule"/>
+    <line x1="58" y1="400" x2="1342" y2="400" class="rule"/>
+    <line x1="58" y1="455" x2="1342" y2="455" class="rule"/>
+    <line x1="58" y1="510" x2="1342" y2="510" class="rule"/>
+    <line x1="58" y1="565" x2="1342" y2="565" class="rule"/>
+
+    <line x1="205" y1="58" x2="205" y2="565" class="rule"/>
+    <line x1="365" y1="58" x2="365" y2="565" class="rule"/>
+    <line x1="505" y1="58" x2="505" y2="565" class="rule"/>
+    <line x1="650" y1="58" x2="650" y2="565" class="rule"/>
+    <line x1="760" y1="58" x2="760" y2="565" class="rule"/>
+    <line x1="970" y1="58" x2="970" y2="565" class="rule"/>
+    <line x1="1155" y1="58" x2="1155" y2="565" class="rule"/>
+  </g>
+
+  <g class="column">
+    <text x="72" y="97">TIMESTAMP</text>
+    <text x="219" y="97">DOMAIN</text>
+    <text x="379" y="97">SHARD RANGE</text>
+    <text x="519" y="97">GRANT ID</text>
+    <text x="664" y="97">REGION</text>
+    <text x="774" y="97">POD ID</text>
+    <text x="984" y="97">FROM_STATE</text>
+    <text x="1169" y="97">TO_STATE</text>
+  </g>
+
+  <g class="cell">
+    <text x="72" y="158">10:18:02.143</text><text x="219" y="158">facilities</text><text x="379" y="158">0000–2000</text><text x="519" y="158">grant-a6f2</text><text x="664" y="158">east-1</text><text x="774" y="158" class="link" role="link">pod-a17c</text>
+    <text x="72" y="213">10:18:02.271</text><text x="219" y="213">facilities</text><text x="379" y="213">0000–2000</text><text x="519" y="213">grant-b91d</text><text x="664" y="213">east-1</text><text x="774" y="213" class="link" role="link">pod-f29d</text>
+    <text x="72" y="268">10:22:14.608</text><text x="219" y="268">facilities</text><text x="379" y="268">0000–2000</text><text x="519" y="268">grant-a6f2</text><text x="664" y="268">east-1</text><text x="774" y="268" class="link" role="link">pod-a17c</text>
+    <text x="72" y="323">10:22:14.721</text><text x="219" y="323">facilities</text><text x="379" y="323">0000–2000</text><text x="519" y="323">grant-b91d</text><text x="664" y="323">east-1</text><text x="774" y="323" class="link" role="link">pod-f29d</text>
+    <text x="72" y="378">10:25:08.044</text><text x="219" y="378">facilities</text><text x="379" y="378">0000–2000</text><text x="519" y="378">grant-a6f2</text><text x="664" y="378">east-1</text><text x="774" y="378" class="link" role="link">pod-a17c</text>
+    <text x="72" y="433">10:25:08.116</text><text x="219" y="433">facilities</text><text x="379" y="433">0000–2000</text><text x="519" y="433">grant-b91d</text><text x="664" y="433">east-1</text><text x="774" y="433" class="link" role="link">pod-f29d</text>
+    <text x="72" y="488">10:27:43.501</text><text x="219" y="488">facilities</text><text x="379" y="488">2000–4000</text><text x="519" y="488">grant-c33a</text><text x="664" y="488">central-1</text><text x="774" y="488" class="link" role="link">pod-j44c</text>
+    <text x="72" y="543">10:27:43.624</text><text x="219" y="543">facilities</text><text x="379" y="543">2000–4000</text><text x="519" y="543">grant-d08e</text><text x="664" y="543">central-1</text><text x="774" y="543" class="link" role="link">pod-k15f</text>
+  </g>
+
+  <g class="cell">
+    <text x="986" y="158">ACTIVE</text><text x="1171" y="158">REVOKED</text>
+    <text x="986" y="213">PENDING</text><text x="1171" y="213">ALLOCATED</text>
+    <text x="986" y="268">REVOKED</text><text x="1171" y="268">UNLOADED</text>
+    <text x="986" y="323">ALLOCATED</text><text x="1171" y="323">LOADED</text>
+    <text x="986" y="378">UNLOADED</text><text x="1171" y="378">REMOVED</text>
+    <text x="986" y="433">LOADED</text><text x="1171" y="433">ACTIVE</text>
+    <text x="986" y="488">ACTIVE</text><text x="1171" y="488">REVOKED</text>
+    <text x="986" y="543">PENDING</text><text x="1171" y="543">ALLOCATED</text>
+  </g>
+</svg>

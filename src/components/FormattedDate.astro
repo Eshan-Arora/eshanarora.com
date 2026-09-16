@@ -1,17 +1,17 @@
 ---
+import { format } from 'date-fns';
+
 interface Props {
 	date: Date;
 }
 
 const { date } = Astro.props;
+
+const calendarDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+const formattedDate = format(calendarDate, 'MMMM do, yyyy');
+const dateTime = format(calendarDate, 'yyyy-MM-dd');
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<time datetime={dateTime}>
+	{formattedDate}
 </time>

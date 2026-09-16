@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="719" viewBox="0 30 1200 719">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <style>
+      .title{font:700 31px system-ui,sans-serif;fill:#101828}
+      .label{font:700 21px system-ui,sans-serif;fill:#101828}
+      .small{font:17px system-ui,sans-serif;fill:#475467}
+      .field{font:16px system-ui,sans-serif;fill:#344054}
+      .box{fill:#f8fafc;stroke:#98a2b3;stroke-width:2}
+      .grant{fill:#ecfdf3;stroke:#73bf69;stroke-width:2}
+      .grant-loaded{fill:#e6f9fd;stroke:#53cce6;stroke-width:2}
+      .arrow{stroke:#667085;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .coordinator{fill:#eef4ff;stroke:#5794f2;stroke-width:3}
+      .divider{stroke:#b9cff6;stroke-width:2}
+      .section{font:700 15px system-ui,sans-serif;fill:#5794f2;letter-spacing:1.4px}
+    </style>
+  </defs>
+  <rect x="50" y="50" width="1100" height="395" rx="24" class="coordinator"/>
+  <text x="90" y="98" class="label">Coordinator</text>
+  <text x="1110" y="96" text-anchor="end" class="section">IN-MEMORY GRANTS</text>
+  <line x1="50" y1="125" x2="1150" y2="125" class="divider"/>
+
+  <rect x="90" y="145" width="290" height="180" rx="18" class="grant"/>
+  <text x="120" y="183" class="label">Grant A</text>
+  <text x="120" y="216" class="field">ID</text><text x="205" y="216" class="field">…:799</text>
+  <text x="120" y="244" class="field">Shard</text><text x="205" y="244" class="field">0000–2000</text>
+  <text x="120" y="272" class="field">State</text><text x="205" y="272" class="field">ACTIVE</text>
+  <text x="120" y="300" class="field">Lease</text><text x="205" y="300" class="field">expires 10:42</text>
+
+  <rect x="455" y="145" width="290" height="180" rx="18" class="grant-loaded"/>
+  <text x="485" y="183" class="label">Grant B</text>
+  <text x="485" y="216" class="field">ID</text><text x="570" y="216" class="field">…:800</text>
+  <text x="485" y="244" class="field">Shard</text><text x="570" y="244" class="field">2000–4000</text>
+  <text x="485" y="272" class="field">State</text><text x="570" y="272" class="field">ALLOCATED_LOADED</text>
+  <text x="485" y="300" class="field">Lease</text><text x="570" y="300" class="field">expires 10:42</text>
+
+  <rect x="820" y="145" width="290" height="180" rx="18" class="grant"/>
+  <text x="850" y="183" class="label">Grant C</text>
+  <text x="850" y="216" class="field">ID</text><text x="935" y="216" class="field">…:801</text>
+  <text x="850" y="244" class="field">Shard</text><text x="935" y="244" class="field">4000–6000</text>
+  <text x="850" y="272" class="field">State</text><text x="935" y="272" class="field">ACTIVE</text>
+  <text x="850" y="300" class="field">Lease</text><text x="935" y="300" class="field">expires 10:42</text>
+
+  <path d="M235 328 C260 420 350 455 405 505" class="arrow"/>
+  <path d="M600 328 C575 420 500 455 445 505" class="arrow"/>
+  <path d="M965 328 V505" class="arrow"/>
+
+  <rect x="170" y="510" width="510" height="145" rx="20" class="box"/>
+  <text x="425" y="565" text-anchor="middle" class="label">Pod A</text>
+  <rect x="235" y="605" width="180" height="30" rx="10" fill="#d1fadf"/>
+  <rect x="435" y="605" width="180" height="30" rx="10" fill="#cff5fb"/>
+  <text x="325" y="626" text-anchor="middle" class="field">Shard 0000–2000</text>
+  <text x="525" y="626" text-anchor="middle" class="field">Shard 2000–4000</text>
+
+  <rect x="790" y="510" width="340" height="145" rx="20" class="box"/>
+  <text x="960" y="565" text-anchor="middle" class="label">Pod B</text>
+  <rect x="870" y="605" width="180" height="30" rx="10" fill="#d1fadf"/>
+  <text x="960" y="626" text-anchor="middle" class="field">Shard 4000–6000</text>
+
+</svg>

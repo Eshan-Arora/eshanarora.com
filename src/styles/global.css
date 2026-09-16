@@ -81,7 +81,33 @@ p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin: 0 0 1.5rem;
+}
+.prose h2 {
+	margin: 4rem 0 1.25rem;
+}
+.prose h3 {
+	margin: 3rem 0 1rem;
+}
+.prose h2 + h3 {
+	margin-top: 1.75rem;
+}
+.prose ul,
+.prose ol {
+	margin: 0.75rem 0 1.75rem;
+	padding-left: 1.5rem;
+}
+.prose ul {
+	list-style: disc;
+}
+.prose ol {
+	list-style: decimal;
+}
+.prose li::marker {
+	color: var(--accent);
+}
+.prose li + li {
+	margin-top: 0.35rem;
 }
 textarea {
 	width: 100%;
@@ -99,9 +125,12 @@ img {
 	border-radius: 8px;
 }
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	padding: 0.1em 0.38em;
+	border: 1px solid rgba(var(--gray), 18%);
+	border-radius: 0.4em;
+	background-color: rgba(var(--gray-light), 75%);
+	font-size: 0.84em;
+	line-height: 1;
 }
 pre {
 	padding: 1.5em;

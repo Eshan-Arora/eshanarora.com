@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="1040" viewBox="0 0 1400 520">
+  <defs>
+    <marker id="arrow" viewBox="0 0 14 12" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,6 L0,12 Z" fill="#667085"/>
+    </marker>
+    <style>
+      .edge{fill:none;stroke:#667085;stroke-width:4;marker-end:url(#arrow)}
+      .label{font:700 28px system-ui,-apple-system,sans-serif;fill:#101828}
+      .sub{font:600 20px system-ui,-apple-system,sans-serif;fill:#475467}
+      .state{font:700 22px system-ui,-apple-system,sans-serif;text-anchor:middle;dominant-baseline:middle}
+    </style>
+  </defs>
+
+  <path d="M400 180 H420" class="edge"/>
+  <path d="M570 180 H590" class="edge"/>
+  <path d="M740 180 H760" class="edge"/>
+  <path d="M910 180 H930" class="edge"/>
+  <path d="M1080 180 H1100" class="edge"/>
+
+  <path d="M910 370 H930" class="edge"/>
+  <path d="M1080 370 H1100" class="edge"/>
+
+  <text x="45" y="164" class="label">Grant A</text>
+  <text x="45" y="195" class="sub">Shard 0000–4000</text>
+  <text x="45" y="354" class="label">Grant B</text>
+  <text x="45" y="385" class="sub">Shard 0000–4000</text>
+
+  <rect x="250" y="135" width="150" height="90" rx="16" fill="#5794f2"/>
+  <text x="325" y="180" class="state" fill="#fff">ALLOCATED</text>
+  <rect x="420" y="135" width="150" height="90" rx="16" fill="#53cce6"/>
+  <text x="495" y="180" class="state" fill="#101828">LOADED</text>
+  <rect x="590" y="135" width="150" height="90" rx="16" fill="#73bf69"/>
+  <text x="665" y="180" class="state" fill="#fff">ACTIVE</text>
+  <rect x="760" y="135" width="150" height="90" rx="16" fill="#ff9830"/>
+  <text x="835" y="180" class="state" fill="#fff">REVOKED</text>
+  <rect x="930" y="135" width="150" height="90" rx="16" fill="#8e8e8e"/>
+  <text x="1005" y="180" class="state" fill="#fff">UNLOADED</text>
+  <rect x="1100" y="135" width="150" height="90" rx="16" fill="#fff" stroke="#98a2b3" stroke-width="3"/>
+  <text x="1175" y="180" class="state" fill="#101828">REMOVED</text>
+
+  <rect x="760" y="325" width="150" height="90" rx="16" fill="#5794f2"/>
+  <text x="835" y="370" class="state" fill="#fff">ALLOCATED</text>
+  <rect x="930" y="325" width="150" height="90" rx="16" fill="#53cce6"/>
+  <text x="1005" y="370" class="state" fill="#101828">LOADED</text>
+  <rect x="1100" y="325" width="150" height="90" rx="16" fill="#73bf69"/>
+  <text x="1175" y="370" class="state" fill="#fff">ACTIVE</text>
+</svg>

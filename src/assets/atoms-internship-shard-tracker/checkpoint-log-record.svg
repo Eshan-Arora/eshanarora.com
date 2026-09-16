@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="365" viewBox="270 80 660 365">
+  <defs><style>
+    .title{font:700 32px system-ui,sans-serif;fill:#101828}
+    .header{font:700 21px system-ui,sans-serif;fill:#fff}
+    .field{font:18px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#344054}
+    .key{font-weight:700}
+    .note{font:18px system-ui,sans-serif;fill:#475467}
+  </style></defs>
+  <rect x="300" y="105" width="600" height="310" fill="#f8fafc" stroke="#5794f2" stroke-width="3"/>
+  <rect x="300" y="105" width="600" height="62" fill="#5794f2"/>
+  <path d="M850 105 H900 V155 Z" fill="#b9d2fb"/>
+  <text x="335" y="145" class="header">LOG RECORD · checkpoint</text>
+  <text x="340" y="200" class="field"><tspan class="key">event_source</tspan>             coordinator</text>
+  <text x="340" y="232" class="field"><tspan class="key">event_type</tspan>               checkpoint</text>
+  <text x="340" y="264" class="field"><tspan class="key">checkpoint_id</tspan>            5d3d0ca3…</text>
+  <text x="340" y="296" class="field"><tspan class="key">checkpoint_at</tspan>            09:58</text>
+  <text x="340" y="350" class="field"><tspan class="key">shards</tspan>                   [{ range, grants: […] }, …]</text>
+</svg>

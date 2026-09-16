@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="600" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Before and after structured logging</title>
+  <desc id="desc">An unstructured grant movement log is transformed into structured fields for event type, grant, pod, previous state, and next state.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <style>
+      .eyebrow{font:700 17px system-ui,-apple-system,sans-serif;letter-spacing:1.2px}
+      .mono{font:18px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#101828}
+      .before{fill:#f2f4f7;stroke:#98a2b3;stroke-width:2}
+      .after{fill:#eff8ff;stroke:#5794f2;stroke-width:2}
+      .arrow{stroke:#667085;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text x="35" y="34" class="eyebrow" fill="#475467">BEFORE</text>
+  <text x="665" y="34" class="eyebrow" fill="#5794f2">AFTER</text>
+
+  <rect x="35" y="55" width="500" height="205" rx="18" class="before"/>
+  <text x="70" y="105" class="mono">Initiated grant move:</text>
+  <text x="70" y="145" class="mono">Move[unit=test/observer-prober/global/</text>
+  <text x="70" y="180" class="mono">4000–6000, …:799@2498… → …:807@7749…]</text>
+
+  <path d="M555 157 H635" class="arrow"/>
+
+  <rect x="665" y="55" width="500" height="205" rx="18" class="after"/>
+  <text x="700" y="100" class="mono">event_type = promote</text>
+  <text x="700" y="138" class="mono">grant = …:807</text>
+  <text x="915" y="138" class="mono">consumer_pod = pod-b</text>
+  <text x="700" y="176" class="mono">from_state = ALLOCATED_LOADED</text>
+  <text x="700" y="214" class="mono">to_state = ACTIVE</text>
+</svg>

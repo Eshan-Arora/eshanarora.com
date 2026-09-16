@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 140 1200 320">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <style>
+      .title{font:700 32px system-ui,sans-serif;fill:#101828}.label{font:600 22px system-ui,sans-serif;fill:#101828}
+      .small{font:18px system-ui,sans-serif;fill:#475467}.box{fill:#f8fafc;stroke:#98a2b3;stroke-width:2}
+      .arrow{stroke:#667085;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="60" y="150" width="300" height="280" rx="20" class="box"/>
+  <text x="210" y="200" text-anchor="middle" class="label">Coordinator events</text>
+  <text x="92" y="255" class="small">grant_id</text><text x="210" y="255" class="small">…:799</text>
+  <text x="92" y="295" class="small">consumer_pod</text><text x="225" y="295" class="small">pod-a</text>
+  <text x="92" y="335" class="small">from_state</text><text x="210" y="335" class="small">ACTIVE</text>
+  <text x="92" y="375" class="small">to_state</text><text x="210" y="375" class="small">REVOKED</text>
+  <path d="M365 290 H470" class="arrow"/>
+  <rect x="480" y="200" width="240" height="180" rx="20" fill="#eef4ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="600" y="270" text-anchor="middle" class="label">ClickHouse</text>
+  <text x="600" y="312" text-anchor="middle" class="small">ordered event history</text>
+  <path d="M725 290 H830" class="arrow"/>
+  <rect x="840" y="150" width="300" height="280" rx="20" fill="#ecfdf3" stroke="#73bf69" stroke-width="2"/>
+  <text x="990" y="205" text-anchor="middle" class="label">Shard Tracker</text>
+  <rect x="890" y="255" width="205" height="32" rx="8" fill="#73bf69"/>
+  <rect x="890" y="315" width="130" height="32" rx="8" fill="#ff9830"/>
+</svg>

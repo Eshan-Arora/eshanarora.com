@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1260" viewBox="0 0 1600 630">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <style>
+      .edge { fill:none; stroke:#667085; stroke-width:4; marker-end:url(#arrow); }
+      .shortcut { fill:none; stroke:#667085; stroke-width:4; stroke-dasharray:12 10; marker-end:url(#arrow); }
+      .edge-label { font:600 22px system-ui,-apple-system,sans-serif; fill:#475467; paint-order:stroke; stroke:#fff; stroke-width:8; stroke-linejoin:round; }
+      .state { font:700 26px system-ui,-apple-system,sans-serif; text-anchor:middle; dominant-baseline:middle; }
+      .terminal { font:600 25px system-ui,-apple-system,sans-serif; fill:#101828; text-anchor:middle; dominant-baseline:middle; }
+    </style>
+  </defs>
+
+  <!-- Every transition is drawn independently so the branching topology stays visible. -->
+  <path class="edge" d="M235 275 L340 155"/>
+  <path class="edge" d="M235 305 H720"/>
+  <path class="edge" d="M455 205 V420"/>
+  <path class="edge" d="M570 155 L720 285"/>
+  <path class="edge" d="M620 470 L720 335"/>
+  <path class="edge" d="M815 260 L1020 155"/>
+  <path class="edge" d="M1125 205 V420"/>
+
+  <!-- Release and expiry paths span the graph instead of collapsing into one lane. -->
+  <path class="shortcut" d="M455 105 C455 30 1465 30 1465 260"/>
+  <path class="shortcut" d="M480 520 C480 605 1465 605 1465 370"/>
+  <path class="shortcut" d="M910 310 H1360"/>
+  <path class="edge" d="M1230 155 L1360 285"/>
+  <path class="edge" d="M1280 470 L1360 345"/>
+
+  <!-- Transition labels -->
+  <text x="276" y="205" class="edge-label" text-anchor="middle">assign</text>
+  <text x="620" y="292" class="edge-label" text-anchor="middle">assign</text>
+  <text x="474" y="360" class="edge-label">update</text>
+  <text x="637" y="202" class="edge-label" text-anchor="middle">promote</text>
+  <text x="654" y="405" class="edge-label" text-anchor="middle">promote</text>
+  <text x="920" y="183" class="edge-label" text-anchor="middle">revoke</text>
+  <text x="1144" y="360" class="edge-label">update</text>
+
+  <text x="650" y="58" class="edge-label" text-anchor="middle">release</text>
+  <text x="690" y="582" class="edge-label" text-anchor="middle">release</text>
+  <text x="930" y="292" class="edge-label">release or expire</text>
+  <text x="1260" y="218" class="edge-label">release or expire</text>
+  <text x="1295" y="458" class="edge-label">release or expire</text>
+
+  <!-- State entities -->
+  <rect x="25" y="250" width="210" height="110" rx="18" fill="#fff" stroke="#98a2b3" stroke-width="3"/>
+  <text x="130" y="305" class="terminal">Grant created</text>
+
+  <rect x="340" y="105" width="230" height="100" rx="18" fill="#5794f2"/>
+  <text x="455" y="155" class="state" fill="#fff">ALLOCATED</text>
+
+  <rect x="340" y="420" width="280" height="100" rx="18" fill="#53cce6"/>
+  <text x="480" y="470" class="state" fill="#101828">ALLOCATED_LOADED</text>
+
+  <rect x="720" y="260" width="190" height="100" rx="18" fill="#73bf69"/>
+  <text x="815" y="310" class="state" fill="#fff">ACTIVE</text>
+
+  <rect x="1020" y="105" width="210" height="100" rx="18" fill="#ff9830"/>
+  <text x="1125" y="155" class="state" fill="#fff">REVOKED</text>
+
+  <rect x="980" y="420" width="300" height="100" rx="18" fill="#8e8e8e"/>
+  <text x="1130" y="470" class="state" fill="#fff">REVOKED_UNLOADED</text>
+
+  <rect x="1360" y="260" width="215" height="110" rx="18" fill="#fff" stroke="#98a2b3" stroke-width="3"/>
+  <text x="1467.5" y="315" class="terminal">Grant removed</text>
+</svg>

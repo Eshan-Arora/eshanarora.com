@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 35 1200 480">
+  <defs><style>
+    .label{font:600 20px system-ui,sans-serif;fill:#101828}.small{font:18px system-ui,sans-serif;fill:#475467}
+    .inverse{fill:#fff}.axis{stroke:#98a2b3;stroke-width:3}.event{font:700 21px system-ui,sans-serif;fill:#fff}
+  </style></defs>
+  <rect x="90" y="105" width="1070" height="300" fill="#292c33"/>
+  <text x="625" y="140" text-anchor="middle" class="small inverse">Selected window</text>
+  <line x1="90" y1="350" x2="1160" y2="350" class="axis"/>
+  <line x1="90" y1="105" x2="90" y2="405" stroke="#5794f2" stroke-width="4"/>
+  <text x="491" y="215" text-anchor="middle" class="event">REVOKE 10:20</text>
+  <text x="744" y="255" text-anchor="middle" class="event">UPDATE 10:24</text>
+  <text x="1026" y="215" text-anchor="middle" class="event">RELEASE 10:27</text>
+  <rect x="491" y="305" width="253" height="46" fill="#ff9830"/>
+  <rect x="744" y="305" width="282" height="46" fill="#8e8e8e"/>
+  <line x1="491" y1="265" x2="491" y2="365" stroke="#ff9830" stroke-width="4"/>
+  <line x1="744" y1="275" x2="744" y2="365" stroke="#8e8e8e" stroke-width="4"/>
+  <line x1="1026" y1="265" x2="1026" y2="365" stroke="#667085" stroke-width="4"/>
+  <text x="618" y="335" text-anchor="middle" class="small">REVOKED</text>
+  <text x="885" y="335" text-anchor="middle" class="small inverse">REVOKED_UNLOADED</text>
+  <text x="90" y="440" text-anchor="start" class="small">10:00 · start</text>
+  <text x="1160" y="440" text-anchor="end" class="small">10:30 · end</text>
+</svg>

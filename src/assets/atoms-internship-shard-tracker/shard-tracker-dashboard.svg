@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2800" height="1632" viewBox="0 0 1400 816" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrated shard tracker dashboard</title>
+  <desc id="desc">A simplified Grafana-style dashboard with filters, a one-hour time range, pod and shard metadata, and many grant handoffs across timeline rows.</desc>
+  <defs>
+    <style>
+      .ink{fill:#101828}.muted{fill:#475467}.inverse{fill:#fff}
+      .filter-label{font:600 13px system-ui,-apple-system,sans-serif;letter-spacing:.2px}
+      .filter-value{font:500 16px system-ui,-apple-system,sans-serif}
+      .column{font:700 12px system-ui,-apple-system,sans-serif;letter-spacing:1px}
+      .meta{font:500 14px ui-monospace,SFMono-Regular,Menlo,monospace}
+      .tick{font:500 13px system-ui,-apple-system,sans-serif}
+      .bar-label{font:700 10px system-ui,-apple-system,sans-serif;letter-spacing:.4px;fill:#101828}
+      .filter{fill:#f8fafc;stroke:#98a2b3;stroke-width:2}
+      .panel{fill:none;stroke:#98a2b3;stroke-width:2}
+      .metadata{fill:#f2f4f7}
+      .plot{fill:#292c33}
+      .row-rule{stroke:#d0d5dd;stroke-width:1}
+      .grid{stroke:#667085;stroke-width:1;opacity:.45}
+      .active{fill:#73bf69}
+      .allocated{fill:#5794f2}
+      .loaded{fill:#53cce6}
+      .revoked{fill:#ff9830}
+      .unloaded{fill:#8e8e8e}
+    </style>
+  </defs>
+
+  <g>
+    <text x="40" y="55" class="filter-label muted">Environment</text>
+    <rect x="40" y="68" width="170" height="46" rx="10" class="filter"/>
+    <circle cx="60" cy="91" r="5" fill="#73bf69"/>
+    <text x="74" y="97" class="filter-value ink">staging</text>
+    <text x="191" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="225" y="55" class="filter-label muted">Tenant</text>
+    <rect x="225" y="68" width="135" height="46" rx="10" class="filter"/>
+    <text x="243" y="97" class="filter-value ink">test</text>
+    <text x="341" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="375" y="55" class="filter-label muted">Service</text>
+    <rect x="375" y="68" width="220" height="46" rx="10" class="filter"/>
+    <text x="393" y="97" class="filter-value ink">order-central</text>
+    <text x="576" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="610" y="55" class="filter-label muted">Domain</text>
+    <rect x="610" y="68" width="180" height="46" rx="10" class="filter"/>
+    <text x="628" y="97" class="filter-value ink">facilities</text>
+    <text x="771" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="805" y="55" class="filter-label muted">Shard region</text>
+    <rect x="805" y="68" width="175" height="46" rx="10" class="filter"/>
+    <text x="823" y="97" class="filter-value ink">All</text>
+    <text x="961" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+
+    <text x="995" y="55" class="filter-label muted">Key</text>
+    <rect x="995" y="68" width="180" height="46" rx="10" class="filter"/>
+    <text x="1013" y="97" class="filter-value muted">Enter value</text>
+
+    <text x="1190" y="55" class="filter-label muted">Time range</text>
+    <rect x="1190" y="68" width="170" height="46" rx="10" fill="#eef4ff" stroke="#5794f2" stroke-width="2"/>
+    <circle cx="1212" cy="91" r="8" fill="none" stroke="#5794f2" stroke-width="2"/>
+    <path d="M1212 86 V91 L1216 94" fill="none" stroke="#5794f2" stroke-width="2" stroke-linecap="round"/>
+    <text x="1230" y="97" class="filter-value ink">Last 1 hour</text>
+    <text x="1341" y="97" text-anchor="end" class="filter-value muted">⌄</text>
+  </g>
+
+  <rect x="40" y="150" width="1320" height="626" rx="18" class="panel"/>
+
+  <g transform="translate(0 -44)">
+  <rect x="60" y="246" width="480" height="544" rx="12" class="metadata"/>
+  <rect x="550" y="246" width="790" height="544" rx="12" class="plot"/>
+
+  <text x="75" y="229" class="column muted">POD ID</text>
+  <text x="250" y="229" class="column muted">REGION</text>
+  <text x="360" y="229" class="column muted">SHARD RANGE</text>
+  <text x="550" y="229" class="tick muted">10:00</text>
+  <text x="748" y="229" text-anchor="middle" class="tick muted">10:15</text>
+  <text x="945" y="229" text-anchor="middle" class="tick muted">10:30</text>
+  <text x="1143" y="229" text-anchor="middle" class="tick muted">10:45</text>
+  <text x="1340" y="229" text-anchor="end" class="tick muted">now</text>
+
+  <g>
+    <line x1="550" y1="246" x2="550" y2="790" class="grid"/>
+    <line x1="748" y1="246" x2="748" y2="790" class="grid"/>
+    <line x1="945" y1="246" x2="945" y2="790" class="grid"/>
+    <line x1="1143" y1="246" x2="1143" y2="790" class="grid"/>
+    <line x1="1340" y1="246" x2="1340" y2="790" class="grid"/>
+  </g>
+
+  <g class="meta ink">
+    <text x="75" y="277">pod-a17c</text><text x="250" y="277">east-1</text><text x="360" y="277">0000–0800</text>
+    <text x="75" y="311">pod-f29d</text><text x="250" y="311">east-1</text><text x="360" y="311">0000–0800</text>
+    <text x="75" y="345">pod-b42f</text><text x="250" y="345">east-1</text><text x="360" y="345">0800–1600</text>
+    <text x="75" y="379">pod-c08a</text><text x="250" y="379">east-1</text><text x="360" y="379">1600–2400</text>
+    <text x="75" y="413">pod-h71b</text><text x="250" y="413">east-1</text><text x="360" y="413">1600–2400</text>
+    <text x="75" y="447">pod-d31e</text><text x="250" y="447">central-1</text><text x="360" y="447">2400–3200</text>
+    <text x="75" y="481">pod-j44c</text><text x="250" y="481">central-1</text><text x="360" y="481">2400–3200</text>
+    <text x="75" y="515">pod-e90a</text><text x="250" y="515">central-1</text><text x="360" y="515">3200–4000</text>
+    <text x="75" y="549">pod-k15f</text><text x="250" y="549">west-1</text><text x="360" y="549">4000–4800</text>
+    <text x="75" y="583">pod-m62d</text><text x="250" y="583">west-1</text><text x="360" y="583">4000–4800</text>
+    <text x="75" y="617">pod-n08c</text><text x="250" y="617">west-1</text><text x="360" y="617">4800–5600</text>
+    <text x="75" y="651">pod-p33b</text><text x="250" y="651">west-1</text><text x="360" y="651">4800–5600</text>
+    <text x="75" y="685">pod-q74e</text><text x="250" y="685">west-2</text><text x="360" y="685">5600–6400</text>
+    <text x="75" y="719">pod-r19a</text><text x="250" y="719">west-2</text><text x="360" y="719">6400–7200</text>
+    <text x="75" y="753">pod-s55c</text><text x="250" y="753">west-2</text><text x="360" y="753">6400–7200</text>
+  </g>
+
+  <g>
+    <line x1="60" y1="287" x2="1340" y2="287" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="321" x2="1340" y2="321" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="355" x2="1340" y2="355" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="389" x2="1340" y2="389" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="423" x2="1340" y2="423" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="457" x2="1340" y2="457" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="491" x2="1340" y2="491" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="525" x2="1340" y2="525" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="559" x2="1340" y2="559" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="593" x2="1340" y2="593" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="627" x2="1340" y2="627" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="661" x2="1340" y2="661" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="695" x2="1340" y2="695" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="729" x2="1340" y2="729" class="row-rule" opacity=".35"/>
+    <line x1="60" y1="763" x2="1340" y2="763" class="row-rule" opacity=".35"/>
+  </g>
+
+  <g>
+    <rect x="570" y="261" width="150" height="20" rx="6" class="active"/>
+    <rect x="720" y="261" width="8" height="20" class="revoked"/>
+    <rect x="728" y="261" width="8" height="20" class="unloaded"/>
+    <text x="645" y="275" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="720" y="295" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="728" y="295" width="8" height="20" class="loaded"/>
+    <rect x="736" y="295" width="589" height="20" rx="6" class="active"/>
+    <text x="1030" y="309" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="329" width="755" height="20" rx="6" class="active"/>
+    <text x="948" y="343" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="363" width="270" height="20" rx="6" class="active"/>
+    <rect x="840" y="363" width="8" height="20" class="revoked"/>
+    <rect x="848" y="363" width="8" height="20" class="unloaded"/>
+    <text x="705" y="377" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="840" y="397" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="848" y="397" width="8" height="20" class="loaded"/>
+    <rect x="856" y="397" width="469" height="20" rx="6" class="active"/>
+    <text x="1090" y="411" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="431" width="360" height="20" rx="6" class="active"/>
+    <rect x="930" y="431" width="8" height="20" class="revoked"/>
+    <rect x="938" y="431" width="8" height="20" class="unloaded"/>
+    <text x="750" y="445" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="930" y="465" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="938" y="465" width="8" height="20" class="loaded"/>
+    <rect x="946" y="465" width="379" height="20" rx="6" class="active"/>
+    <text x="1135" y="479" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="499" width="755" height="20" rx="6" class="active"/>
+    <text x="948" y="513" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="533" width="490" height="20" rx="6" class="active"/>
+    <rect x="1060" y="533" width="8" height="20" class="revoked"/>
+    <rect x="1068" y="533" width="8" height="20" class="unloaded"/>
+    <text x="815" y="547" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="1060" y="567" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="1068" y="567" width="8" height="20" class="loaded"/>
+    <rect x="1076" y="567" width="249" height="20" rx="6" class="active"/>
+    <text x="1200" y="581" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="601" width="575" height="20" rx="6" class="active"/>
+    <rect x="1145" y="601" width="8" height="20" class="revoked"/>
+    <rect x="1153" y="601" width="8" height="20" class="unloaded"/>
+    <text x="857" y="615" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="1145" y="635" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="1153" y="635" width="8" height="20" class="loaded"/>
+    <rect x="1161" y="635" width="164" height="20" rx="6" class="active"/>
+    <text x="1243" y="649" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="669" width="755" height="20" rx="6" class="active"/>
+    <text x="948" y="683" text-anchor="middle" class="bar-label">ACTIVE</text>
+
+    <rect x="570" y="703" width="660" height="20" rx="6" class="active"/>
+    <rect x="1230" y="703" width="8" height="20" class="revoked"/>
+    <rect x="1238" y="703" width="8" height="20" class="unloaded"/>
+    <text x="900" y="717" text-anchor="middle" class="bar-label">ACTIVE</text>
+    <rect x="1230" y="737" width="8" height="20" rx="4" class="allocated"/>
+    <rect x="1238" y="737" width="8" height="20" class="loaded"/>
+    <rect x="1246" y="737" width="79" height="20" rx="6" class="active"/>
+  </g>
+  </g>
+</svg>

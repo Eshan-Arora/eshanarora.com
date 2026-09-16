@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 35 1200 520">
+  <defs><style>
+    .title{font:700 32px system-ui,sans-serif;fill:#101828}.label{font:600 20px system-ui,sans-serif;fill:#101828}
+    .small{font:18px system-ui,sans-serif;fill:#475467}.inverse{fill:#fff}.axis{stroke:#98a2b3;stroke-width:3}
+  </style></defs>
+  <rect x="90" y="105" width="350" height="300" fill="#f2f4f7"/>
+  <rect x="440" y="105" width="500" height="300" fill="#292c33"/>
+  <rect x="940" y="105" width="170" height="300" fill="#f2f4f7"/>
+  <text x="260" y="140" text-anchor="middle" class="small">Before</text>
+  <text x="690" y="140" text-anchor="middle" class="small inverse">Selected window</text>
+  <text x="1025" y="140" text-anchor="middle" class="small">After</text>
+  <line x1="90" y1="300" x2="1110" y2="300" class="axis"/>
+  <rect x="180" y="255" width="860" height="46" rx="10" fill="#73bf69" opacity=".22" stroke="#73bf69" stroke-width="3" stroke-dasharray="12 9"/>
+  <circle cx="180" cy="278" r="12" fill="#73bf69" opacity=".45"/>
+  <text x="180" y="210" text-anchor="middle" class="label">ACTIVE log</text>
+  <text x="180" y="238" text-anchor="middle" class="small">days earlier</text>
+  <line x1="440" y1="105" x2="440" y2="405" stroke="#5794f2" stroke-width="4"/>
+  <line x1="940" y1="105" x2="940" y2="405" stroke="#5794f2" stroke-width="4"/>
+  <text x="440" y="440" text-anchor="middle" class="small">start</text>
+  <text x="940" y="440" text-anchor="middle" class="small">end</text>
+</svg>

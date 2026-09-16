@@ -6,7 +6,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, subtitle, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
-				width: calc(100% - 2em);
+				width: 100%;
 				max-width: 100%;
 				margin: 0;
 			}
@@ -28,24 +28,37 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				box-shadow: var(--box-shadow);
 			}
 			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
+				box-sizing: border-box;
+				width: min(960px, calc(100% - 2rem));
 				margin: auto;
-				padding: 1em;
+				padding: 2.5rem 1.5rem 4rem;
 				color: rgb(var(--gray-dark));
 			}
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+				margin-bottom: 2.5rem;
+				padding: 1.5rem 0 0;
+				text-align: left;
+				line-height: 1.1;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				margin: 0;
+				font-size: clamp(2.75rem, 7vw, 4.5rem);
+				letter-spacing: -0.035em;
+			}
+			.subtitle {
+				margin-top: 0.35rem;
+				color: var(--accent);
+				font-size: clamp(1.35rem, 3vw, 1.8rem);
+				font-weight: 400;
 			}
 			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				margin-top: 1rem;
+				color: var(--accent);
+				font-size: 0.9rem;
+				line-height: 1.3;
+			}
+			.title hr {
+				margin: 1.25rem 0 0;
 			}
 			.last-updated-on {
 				font-style: italic;
@@ -61,6 +74,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				</div>
 				<div class="prose">
 					<div class="title">
+						<h1>{title}</h1>
+						{subtitle && <div class="subtitle">{subtitle}</div>}
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -71,7 +86,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 								)
 							}
 						</div>
-						<h1>{title}</h1>
 						<hr />
 					</div>
 					<slot />

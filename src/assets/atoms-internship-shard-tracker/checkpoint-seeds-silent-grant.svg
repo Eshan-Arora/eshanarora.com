@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 35 1200 700">
+  <defs><style>
+    .title{font:700 32px system-ui,sans-serif;fill:#101828}
+    .header{font:700 17px system-ui,sans-serif;fill:#fff}
+    .label{font:600 19px system-ui,sans-serif;fill:#101828}
+    .small{font:17px system-ui,sans-serif;fill:#475467}
+    .mono{font:15px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#344054}
+    .inverse{fill:#fff}.axis{stroke:#98a2b3;stroke-width:3}
+  </style></defs>
+  <rect x="205" y="85" width="470" height="205" fill="#f8fafc" stroke="#5794f2" stroke-width="3"/>
+  <rect x="205" y="85" width="470" height="48" fill="#5794f2"/>
+  <path d="M635 85 H675 V125 Z" fill="#b9d2fb"/>
+  <text x="230" y="117" class="header">LOG RECORD · checkpoint · 09:58</text>
+  <text x="235" y="165" class="mono">shards: [</text>
+  <text x="255" y="192" class="mono">{ range: 0000–2000, grants: [</text>
+  <text x="275" y="219" class="mono">{ grant: “…:620”, state: “active” },</text>
+  <text x="275" y="246" class="mono">…</text>
+  <text x="255" y="273" class="mono">]}, … ]</text>
+
+  <rect x="90" y="325" width="350" height="255" fill="#f2f4f7"/>
+  <rect x="440" y="325" width="500" height="255" fill="#292c33"/>
+  <rect x="940" y="325" width="170" height="255" fill="#f2f4f7"/>
+  <text x="690" y="360" text-anchor="middle" class="small inverse">Selected window</text>
+  <line x1="90" y1="485" x2="1110" y2="485" class="axis"/>
+
+  <rect x="180" y="440" width="150" height="46" rx="10" fill="#73bf69" opacity=".22" stroke="#73bf69" stroke-width="3" stroke-dasharray="12 9"/>
+  <rect x="330" y="440" width="710" height="46" rx="10" fill="#73bf69"/>
+  <circle cx="180" cy="463" r="12" fill="#73bf69" opacity=".45"/>
+  <text x="180" y="405" text-anchor="middle" class="label">ACTIVE log</text>
+  <text x="180" y="430" text-anchor="middle" class="small">days earlier</text>
+
+  <path d="M440 290 C420 305 370 310 335 325" fill="none" stroke="#5794f2" stroke-width="3"/>
+  <line x1="330" y1="325" x2="330" y2="535" stroke="#5794f2" stroke-width="4"/>
+  <text x="265" y="565" text-anchor="middle" class="small">checkpoint finds grant …:620</text>
+  <line x1="440" y1="325" x2="440" y2="580" stroke="#5794f2" stroke-width="4"/>
+  <line x1="940" y1="325" x2="940" y2="580" stroke="#5794f2" stroke-width="4"/>
+  <text x="690" y="470" text-anchor="middle" class="small inverse">ACTIVE</text>
+  <text x="440" y="615" text-anchor="middle" class="small">start</text>
+  <text x="940" y="615" text-anchor="middle" class="small">end</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1000" viewBox="0 0 1200 500">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <style>
+      .label{font:700 22px system-ui,sans-serif;fill:#101828}
+      .value{font:20px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#344054}
+      .range{font:17px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#344054}
+      .arrow{stroke:#667085;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <rect x="80" y="50" width="270" height="110" rx="16" fill="#f9fafb" stroke="#98a2b3" stroke-width="2"/>
+  <text x="106" y="92" class="label">Service</text>
+  <text x="106" y="130" class="value">order-central</text>
+  <path d="M350 105 H384" class="arrow"/>
+
+  <rect x="400" y="50" width="270" height="110" rx="16" fill="#eff8ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="426" y="92" class="label">Domain</text>
+  <text x="426" y="130" class="value">facilities</text>
+
+  <path d="M670 105 H750 V74 H814" class="arrow"/>
+  <path d="M750 105 V139 H814" class="arrow"/>
+  <path d="M750 105 V204 H814" class="arrow"/>
+
+  <text x="830" y="34" class="label">Shards</text>
+  <rect x="830" y="50" width="330" height="48" rx="12" fill="#eff8ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="850" y="81" class="range">0000…–2000…</text>
+  <rect x="830" y="115" width="330" height="48" rx="12" fill="#eff8ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="850" y="146" class="range">2000…–4000…</text>
+  <rect x="830" y="180" width="330" height="48" rx="12" fill="#eff8ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="850" y="211" class="range">4000…–6000…</text>
+
+  <rect x="24" y="286" width="340" height="126" rx="16" fill="#fffaeb" stroke="#f79009" stroke-width="2"/>
+  <text x="50" y="334" class="label">Facility work</text>
+  <text x="50" y="376" class="value">Domain key 1000…</text>
+  <path d="M364 349 H420" class="arrow"/>
+
+  <rect x="436" y="286" width="328" height="126" rx="16" fill="#eff8ff" stroke="#5794f2" stroke-width="2"/>
+  <text x="462" y="334" class="label">Containing shard</text>
+  <text x="462" y="376" class="value">0000…–2000…</text>
+  <path d="M764 349 H820" class="arrow"/>
+
+  <rect x="836" y="286" width="340" height="126" rx="16" fill="#f9fafb" stroke="#98a2b3" stroke-width="2"/>
+  <text x="862" y="334" class="label">Pod</text>
+  <text x="862" y="376" class="value">order-central3-us-abc12</text>
+</svg>
