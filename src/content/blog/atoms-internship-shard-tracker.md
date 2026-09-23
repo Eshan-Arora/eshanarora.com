@@ -6,7 +6,7 @@ pubDate: 2026-09-15
 unlisted: true
 ---
 
-Atoms is a physical automation company, originally focused on food and its delivery. These real-time systems require infrastructure with low latency and high availability. During my internship on the Infra Coordination team, I built an internal debugging tool that greatly improved the speed and accuracy of tracking shard movements in <a href="https://techblog.atoms.co/p/easy-as-pie-stateful-services-at" target="_blank" rel="noopener noreferrer">Splitter</a>.
+Atoms is a physical automation company, originally focused on kitchens and food delivery. These real-time systems require infrastructure with low latency and high availability. During my internship on the Infra Coordination team, I built an internal debugging tool that greatly improved the speed and accuracy of tracking shard movements in <a href="https://techblog.atoms.co/p/easy-as-pie-stateful-services-at" target="_blank" rel="noopener noreferrer">Splitter</a>.
 
 ## How Splitter works
 
@@ -49,9 +49,9 @@ Any loss of Splitter availability degrades the reliability of dependent services
 
 Splitter moves work around a lot, but the team and maintainers of services that use Splitter did not have a good way to view historical shard ownership.
 
-The coordination team would get support messages reporting that shard reassignments caused 600 printers to lose connection to the server, resulting in delays or failures. Another customer reported a shard being lost and never reassigned, asking the team to figure out the root cause.
+The coordination team would get support messages reporting that shard reassignments caused hundreds of printers to lose connection to the server, resulting in delays or failures. Another customer reported a shard being lost and never reassigned, asking the team to figure out the root cause.
 
-For the team, figuring out the root cause previously required piecing together logs from several different sources and writing new SQL queries every time, a painstaking process that slowed support and ultimately hurt reliability.
+Figuring out the root cause previously required piecing together logs from several different sources and writing new SQL queries every time, a painstaking process that slowed support and ultimately hurt reliability.
 
 The goal: Given some domain key or pod identifier, view the associated grants over time.
 
@@ -63,7 +63,7 @@ The first step to a solution was introducing structured logging. Existing logs w
 
 ![](../../assets/atoms-internship-shard-tracker/structured-logging.svg)
 
-Now the logs can be used to create some kind of shard tracker.
+I started by converting the logs to a consistent JSON format. Now they can be queried to create some kind of shard tracker.
 
 ![](../../assets/atoms-internship-shard-tracker/structured-events-flow.svg)
 
@@ -85,7 +85,7 @@ Now, you could search backwards starting from 10 to find the most recent log ass
 
 ![](../../assets/atoms-internship-shard-tracker/left-edge-prior-state.svg)
 
-Now we can quickly reconcile that the grant was active before the revoke log.
+This allows us to quickly determine that the grant was active before the revoke log.
 
 ### Edge Case: Silent Grant
 

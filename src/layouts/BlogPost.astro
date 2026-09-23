@@ -17,32 +17,83 @@ const { title, subtitle, description, pubDate, updatedDate, heroImage } = Astro.
 				width: 100%;
 				max-width: 100%;
 				margin: 0;
+				padding: 0;
 			}
 			.hero-image {
 				width: 100%;
 			}
 			.hero-image img {
 				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
+				width: 100%;
+				height: auto;
+				border-radius: 0;
+				box-shadow: none;
+				filter: none;
 			}
 			.prose {
+				position: relative;
 				box-sizing: border-box;
-				width: min(960px, calc(100% - 2rem));
+				width: 100%;
 				margin: auto;
-				padding: 2.5rem 1.5rem 4rem;
+				padding: 1rem var(--page-gutter) 4rem;
 				color: rgb(var(--gray-dark));
 			}
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 2.5rem;
+				height: 2.5rem;
+				border-radius: 9999px;
+				color: var(--accent);
+				line-height: 1;
+				text-decoration: none;
+			}
+			.back-link svg {
+				width: 1.4rem;
+				height: 1.4rem;
+			}
+			.back-link:hover {
+				background: rgba(var(--gray-light), 60%);
+				color: var(--accent-dark);
+			}
+			@media (min-width: 640px) {
+				.prose {
+					width: min(960px, calc(100% - 2rem));
+					padding: 1rem 1.5rem 4rem;
+				}
+				.back-link {
+					position: absolute;
+					top: 1rem;
+					left: 1.5rem;
+				}
+			}
+			@media (max-width: 639px) {
+				.prose :global(p:has(> img:only-child)) {
+					margin-inline: calc(var(--page-gutter) * -1);
+				}
+				.prose :global(p:has(> img:only-child) > img) {
+					display: block;
+					width: 100%;
+					border-radius: 0;
+				}
+			}
+			@media (min-width: 1100px) {
+				.back-link {
+					top: 2.75rem;
+					left: -3rem;
+				}
+			}
 			.title {
-				margin-bottom: 2.5rem;
-				padding: 1.5rem 0 0;
+				margin-top: 2rem;
+				margin-bottom: 1.5rem;
+				padding: 0;
 				text-align: left;
 				line-height: 1.1;
 			}
 			.title h1 {
 				margin: 0;
-				font-size: clamp(2.75rem, 7vw, 4.5rem);
+				font-size: clamp(2.5rem, 6vw, 3.75rem);
 				letter-spacing: -0.035em;
 			}
 			.subtitle {
@@ -57,6 +108,11 @@ const { title, subtitle, description, pubDate, updatedDate, heroImage } = Astro.
 				font-size: 0.9rem;
 				line-height: 1.3;
 			}
+			.byline {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
 			.title hr {
 				margin: 1.25rem 0 0;
 			}
@@ -69,15 +125,30 @@ const { title, subtitle, description, pubDate, updatedDate, heroImage } = Astro.
 	<body>
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
+					<a class="back-link" href="/" aria-label="Back to home">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M19 12H5"></path>
+							<path d="m12 19-7-7 7-7"></path>
+						</svg>
+					</a>
 					<div class="title">
 						<h1>{title}</h1>
 						{subtitle && <div class="subtitle">{subtitle}</div>}
 						<div class="date">
-							<FormattedDate date={pubDate} />
+							<div class="byline">
+								<span>Eshan Arora</span>
+								<span aria-hidden="true">·</span>
+								<FormattedDate date={pubDate} />
+							</div>
 							{
 								updatedDate && (
 									<div class="last-updated-on">
@@ -87,6 +158,9 @@ const { title, subtitle, description, pubDate, updatedDate, heroImage } = Astro.
 							}
 						</div>
 						<hr />
+					</div>
+					<div class="hero-image">
+						{heroImage && <Image src={heroImage} alt="" />}
 					</div>
 					<slot />
 				</div>
