@@ -1,0 +1,90 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Last layer" description="Edge orientation, corner orientation, corner permutation, and edge permutation." />
+  </head>
+  <body>
+    <main>
+      <h1 class="sr-only">Last layer</h1>
+      <!-- Diagrams from CubeSkills: https://www.cubeskills.com/uploads/pdf/tutorials/4-look-last-layer.pdf -->
+      <section>
+        <h2>1. Edge Orientation (cross on top)</h2>
+        <div class="case">
+          <p>If "L" shaped, hold the edges on top and left.</p>
+          <img src="/images/last-layer/l-shape.png" alt="L-shaped yellow edges held at the top and left" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>If line, hold it horizontally</p>
+          <img src="/images/last-layer/line.png" alt="Yellow edge line held horizontally" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>If nothing, doesn't matter</p>
+          <img src="/images/last-layer/no-edges.png" alt="No yellow edges oriented on top" width="110" height="110" loading="lazy" />
+        </div>
+        <p class="algorithm">Algorithm: <code>F R U R' F'</code> <span>[F Sexy F']</span></p>
+      </section>
+      <section>
+        <h2>2. Corner orientation</h2>
+        <div class="case">
+          <p>If fish shaped, hold the fish head in the bottom left.</p>
+          <img src="/images/last-layer/fish.png" alt="Yellow fish with its head in the bottom left" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>Otherwise, put top color sticker on the left face, top right position</p>
+          <div class="sticker-highlight" style="position: relative; width: 142px; height: 110px; padding-left: 32px; margin-top: 0.5rem;">
+            <svg class="sticker-arrow" width="40" height="110" viewBox="0 0 40 110" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 0; top: 0; width: 40px; height: 110px; stroke: black; fill: none;" aria-hidden="true">
+              <path d="M 2 85 H 37 M 31 80 L 37 85 L 31 90" />
+            </svg>
+            <img style="margin-top: 0;" src="/images/last-layer/left-sticker.png" alt="Arrow pointing to the yellow sticker on the left face at its top right position, beside the front-left corner" width="110" height="110" loading="lazy" />
+          </div>
+        </div>
+        <p class="algorithm">Algorithm: <code>R U R' U R U2 R'</code></p>
+      </section>
+      <section>
+        <h2>3. Corner permutation</h2>
+        <div class="case">
+          <p>If no corner colors match, hold from any angle</p>
+          <img src="/images/last-layer/corners-no-match.png" alt="No matching pair of corner colors on any side" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>If only one pair matches, hold that pair on the left</p>
+          <img src="/images/last-layer/corners.png" alt="Matching corner stickers held on the left" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>If all match, you skipped this step</p>
+          <img src="/images/last-layer/corners-matched.png" alt="Matching corner colors on all four sides" width="110" height="110" loading="lazy" />
+        </div>
+        <p class="algorithm">Algorithm: <code>R U R' U' R' F R2 U' R' U' R U R' F'</code></p>
+      </section>
+      <section>
+        <h2>4. Edge permutation</h2>
+        <div class="case">
+          <p>If no bar, hold from any angle</p>
+          <img src="/images/last-layer/edges-no-bar.png" alt="No solid bar of matching stickers on any side" width="110" height="110" loading="lazy" />
+        </div>
+        <div class="case">
+          <p>Otherwise hold bar in the back</p>
+          <img src="/images/last-layer/edges.png" alt="Matching bar held at the back" width="110" height="110" loading="lazy" />
+        </div>
+        <p class="algorithm">Algorithm: <code>M2 U' M U2 M' U' M2</code></p>
+        <p><em>M brings the top center towards you, while M' moves it away from you</em></p>
+      </section>
+    </main>
+  </body>
+</html>
+<style>
+  main { width: 720px; padding-block: 2.5rem; font-size: 18px; line-height: 1.55; }
+  section + section { margin-top: 2.5rem; }
+  h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.65rem; }
+  p { margin: 0.25rem 0; }
+  .case + .case { margin-top: 1rem; }
+  .case img { display: block; margin-top: 0.5rem; width: 110px; height: 110px; object-fit: contain; border-radius: 0; }
+  .algorithm { margin-top: 0.6rem; }
+  code { padding: 0; border: 0; border-radius: 0; background: none; font-size: 0.95em; line-height: inherit; }
+  .algorithm span { white-space: nowrap; }
+  em { font-size: 0.95em; }
+  @media (max-width: 480px) { main { padding-block: 1.5rem; } }
+</style>
