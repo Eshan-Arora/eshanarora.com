@@ -1,0 +1,23 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/vote.css';
+const { admin = false } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={admin ? 'Vote admin · Eshan Arora' : 'Vote · Eshan Arora'} description="A little place to make a group decision." />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <main class="vote-page" data-admin={String(admin)}>
+      <slot />
+      <p id="connection" class="connection" role="status">Connecting…</p>
+      <p id="error" class="error" role="alert" hidden></p>
+      <noscript>This page needs JavaScript to send votes and update live.</noscript>
+    </main>
+    <script>
+      import '../scripts/vote';
+    </script>
+  </body>
+</html>

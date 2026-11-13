@@ -1,0 +1,40 @@
+---
+import Vote from '../../layouts/Vote.astro';
+import QRCode from 'qrcode';
+const voteUrl = import.meta.env.PUBLIC_VOTE_URL || 'https://eshanarora.com/vote';
+const voteLabel = voteUrl.replace(/^https?:\/\//, '');
+const qr = await QRCode.toString(voteUrl, { type: 'svg', margin: 4, color: { dark: '#1f513b', light: '#faf9f4' } });
+---
+<Vote admin>
+  <div class="join">
+    <a class="join-link" href={voteUrl} target="_blank">{voteLabel}</a>
+    <button id="expand-qr" class="qr" type="button" aria-label="Enlarge QR code" aria-haspopup="dialog" aria-controls="qr-dialog">
+      <span aria-hidden="true" set:html={qr} />
+    </button>
+  </div>
+  <dialog id="qr-dialog" aria-label={`QR code for ${voteLabel}`} tabindex="-1">
+    <div aria-hidden="true" set:html={qr} />
+  </dialog>
+  <section id="vote-controls" class="round-panel" tabindex="-1">
+    <form id="start-form" hidden>
+      <label for="question-input">Topic <kbd aria-hidden="true">T</kbd></label>
+      <textarea id="question-input" aria-keyshortcuts="T" rows="3" maxlength="1000"></textarea>
+      <button class="primary" id="start" type="submit" aria-keyshortcuts="Enter">Start vote →</button>
+    </form>
+    <div id="active-round" hidden>
+      <h2 id="question"></h2>
+      <p id="count" class="vote-count" aria-live="polite">0 votes received</p>
+      <div id="results" class="results" hidden aria-label="Voting results"></div>
+      <div class="actions">
+        <button id="end" class="primary" type="button" aria-keyshortcuts="Enter">End voting</button>
+        <button id="reset" type="button" aria-keyshortcuts="Enter" hidden>Reset</button>
+      </div>
+    </div>
+  </section>
+  <section class="history">
+    <h2>Past votes</h2>
+    <div id="history-list"><p class="small">Loading history…</p></div>
+    <button id="more-history" type="button" hidden>Load older votes</button>
+  </section>
+    <label class="check secondary-setting"><input id="visibility" type="checkbox" aria-keyshortcuts="S" /> Show results to voters <kbd aria-hidden="true">S</kbd></label>
+</Vote>

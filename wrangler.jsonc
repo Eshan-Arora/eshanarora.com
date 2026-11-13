@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "eshanarora-com",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-11-13",
+  "d1_databases": [{
+    "binding": "VOTES",
+    "database_name": "eshanarora-votes",
+    "database_id": "80e276fc-0d93-4b80-a245-03df63b76d2e",
+    "migrations_dir": "migrations"
+  }],
+  "env": {
+    "preview": {
+      "d1_databases": [{
+        "binding": "VOTES",
+        "database_name": "eshanarora-votes-preview",
+        "database_id": "5616d381-ca29-4786-9a00-c96e61802c43",
+        "migrations_dir": "migrations"
+      }]
+    }
+  }
+}

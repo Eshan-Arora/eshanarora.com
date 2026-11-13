@@ -1,0 +1,23 @@
+---
+import Vote from '../../layouts/Vote.astro';
+---
+<Vote>
+  <section class="round-panel">
+    <div id="prompt">
+      <p class="eyebrow" id="phase" hidden></p>
+      <h1 id="question"></h1>
+    </div>
+    <div id="choices" class="vote-choices" tabindex="-1" role="group" aria-label="Your vote" hidden>
+      <button type="button" data-choice="yes">Yes <span aria-hidden="true">✓</span></button>
+      <button type="button" data-choice="no">No <span aria-hidden="true">×</span></button>
+      <button type="button" data-choice="abstain">Abstain <span aria-hidden="true">—</span></button>
+    </div>
+    <div id="saving" class="saving-indicator" role="status" hidden><span class="spinner" aria-hidden="true"></span><span class="sr-only">Saving your vote…</span></div>
+    <div id="confirmation" class="confirmation" tabindex="-1" hidden>
+      <p id="recorded-question" class="recorded-question" hidden></p>
+      <h1 id="recorded-choice"></h1>
+      <button id="change-vote" type="button">Change vote</button>
+    </div>
+    <div id="results" class="results" hidden aria-label="Voting results"></div>
+  </section>
+</Vote>

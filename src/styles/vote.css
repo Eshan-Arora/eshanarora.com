@@ -1,0 +1,90 @@
+.vote-page { width: 680px; padding-top: 2rem; padding-bottom: 3rem; }
+.vote-page [hidden] { display: none !important; }
+.eyebrow { color: var(--accent); font-family: ui-monospace, monospace; }
+.vote-page h1 { font-size: clamp(1.9rem, 7vw, 2.5rem); font-weight: 700; letter-spacing: -.025em; }
+.vote-page h2 { font-size: 1.5rem; font-weight: 700; }
+.vote-page p { margin: .6rem 0 1rem; }
+.vote-page .eyebrow { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+.round-panel { margin: 2rem 0; }
+#question { white-space: pre-wrap; }
+.vote-page button { min-height: 52px; border: 1px solid var(--accent); border-radius: 3px; padding: .7rem 1rem; font: inherit; font-weight: 700; color: var(--accent); background: transparent; cursor: pointer; touch-action: manipulation; }
+@media (hover: hover) and (pointer: fine) {
+  .vote-page button:hover:not(:disabled):not([data-choice]) { background: #e8eddf; }
+  .vote-page button.primary:hover:not(:disabled) { background: var(--accent-dark); }
+}
+.vote-page button:disabled { opacity: .5; cursor: wait; }
+.vote-page :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.vote-page button.primary { background: var(--accent); color: var(--bg); }
+.vote-choices { display: grid; gap: .85rem; margin-top: 1.75rem; }
+.vote-choices button { min-height: 78px; text-align: left; font-size: 1.5rem; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.4rem; }
+.small, .connection { font-size: .9rem; color: #52604f; }
+.connection { border-top: 1px solid #c5cebf; padding-top: 1rem; }
+.error { color: #8c302b; border-left: 3px solid currentColor; padding-left: .75rem; }
+.vote-page label { display: block; }
+.vote-page textarea { font: inherit; padding: .75rem; border: 1px solid #82917b; border-radius: 3px; margin: .5rem 0; background: transparent; resize: vertical; }
+.vote-page .check { display: flex; gap: .7rem; align-items: center; min-height: 52px; margin: .5rem 0 1rem; font-size: 1rem; cursor: pointer; }
+.check input { width: 22px; height: 22px; flex-shrink: 0; accent-color: var(--accent); }
+.join { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #c5cebf; padding: 1.5rem 0; }
+.join-link { font-size: 1.25rem; font-weight: 700; }
+.qr { width: 128px; flex-shrink: 0; }
+.qr svg { display: block; width: 100%; height: auto; }
+.vote-count { font-size: 1.7rem; font-weight: 700; color: var(--accent); }
+.results { border-top: 1px solid #c5cebf; border-bottom: 1px solid #c5cebf; margin: 1.5rem 0; padding: .5rem 0; }
+.result-row { display: flex; justify-content: space-between; padding: .6rem 0; gap: 1rem; }
+.result-row strong { font-variant-numeric: tabular-nums; }
+.actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.history { border-top: 1px solid #c5cebf; padding-top: 1.5rem; margin-top: 3rem; }
+.history-entry { border-bottom: 1px dashed #c5cebf; padding: 1rem 0; }
+.history-entry h3 { font-size: 1.1rem; font-weight: 700; white-space: pre-wrap; }
+.history-entry p { font-size: .9rem; margin: .3rem 0; }
+@media (max-width: 480px) {
+  .vote-page { padding-top: 1rem; }
+  .join-link { font-size: 1rem; }
+  .qr { width: 100px; }
+  .actions button, #start { width: 100%; }
+}
+
+/* Keep the room spare; use the desktop width for readable history. */
+.vote-page[data-admin="true"] { width: 1040px; }
+.vote-page[data-admin="false"] { padding-top: 4rem; }
+.join { padding: 0 0 1.5rem; }
+.vote-page .secondary-setting { margin-top: 2rem; margin-bottom: 0; color: #52604f; font-size: .9rem; }
+.secondary-setting input { width: 18px; height: 18px; }
+#start { margin-top: .5rem; }
+.confirmation { padding: 1rem 0; }
+.confirmation p { color: #52604f; }
+.vote-page .confirmation h1 { font-size: clamp(3.5rem, 14vw, 5rem); color: var(--accent); margin: .5rem 0 2rem; }
+.confirmation:focus { outline: none; }
+.history-entry { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.5rem; align-items: center; }
+.history-counts { display: grid; grid-template-columns: repeat(4, 1fr); text-align: right; gap: .75rem; margin: 0; }
+.history-counts dt { font-size: .8rem; color: #52604f; }
+.history-counts dd { font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: 0; }
+.history-counts > div:last-child { border-left: 1px solid #c5cebf; padding-left: .75rem; }
+@media (max-width: 640px) {
+  .history-entry { grid-template-columns: 1fr; gap: .5rem; }
+  .history-counts { text-align: left; }
+  .vote-page[data-admin="false"] { padding-top: 2rem; }
+}
+
+.vote-page .confirmation .recorded-question { color: rgb(var(--black)); font-size: 1.5rem; font-weight: 700; line-height: 1.3; white-space: pre-wrap; margin: 0 0 1.5rem; }
+
+.vote-page button.qr { padding: 0; border: 0; cursor: zoom-in; }
+.vote-page button.qr:hover { background: transparent; }
+#qr-dialog { width: min(calc(100vw - 3rem), calc(100dvh - 3rem)); max-width: none; max-height: none; padding: 0; border: 0; margin: auto; background: var(--bg); color: var(--accent); }
+#qr-dialog svg { display: block; width: 100%; height: auto; }
+#qr-dialog::backdrop { background: rgb(15 18 25 / 65%); cursor: zoom-out; }
+body:has(#qr-dialog[open]) { overflow: hidden; }
+
+.vote-page kbd { display: inline-block; padding: .05em .4em; border: 1px solid currentColor; border-radius: 3px; font: .7rem/1.5 ui-monospace, monospace; opacity: .6; vertical-align: middle; }
+.vote-page label > kbd, .vote-page button > kbd { margin-left: .45rem; }
+
+.vote-choices:focus { outline: none; }
+
+/* Fast saves keep the buttons visually stable; only slow requests show progress. */
+.vote-choices[aria-busy="true"] button:disabled { opacity: 1; }
+.saving-indicator { position: absolute; margin-top: 1rem; color: var(--accent); }
+.spinner { display: block; width: 1.2rem; height: 1.2rem; border: 2px solid #c5cebf; border-top-color: var(--accent); border-radius: 50%; animation: vote-spin .8s linear infinite; }
+@keyframes vote-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+#vote-controls:focus { outline: none; }
